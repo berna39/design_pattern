@@ -22,4 +22,6 @@ class PersonProxy(Iperson):
 
 p = PersonProxy()
 p.speak()
+
+#this helps us to wrap a functionality or add an abstraction between the real class and the user
         
