@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractstaticmethod
 
-class ICloudService(meta=ABCMeta):
+class ICloudService(metaclass=ABCMeta):
 
     @abstractstaticmethod
     def auth():
@@ -15,16 +15,16 @@ class ICloudService(meta=ABCMeta):
         pass
 
 class Azure(ICloudService):
-    @abstractstaticmethod
-    def auth():
+    def __init__(self):
+        pass
+
+    def auth(self):
         print('Auth to Azure')
 
-    @abstractstaticmethod
-    def deploy():
+    def deploy(self):
         print('Deploy to Azure')
 
-    @abstractstaticmethod
-    def scale():
+    def scale(self):
         print('Scale my app to Azure')
 
 class CloudServiceFactory:
@@ -32,10 +32,13 @@ class CloudServiceFactory:
     @staticmethod
     def get_instance(provider):
         if provider == 'Azure':
-            pass
+            return Azure()
         elif provider == 'Aws':
             pass
         elif provider == 'Gcp':
             pass
         else:
             return -1 
+
+azure = CloudServiceFactory.get_instance('Azure')
+azure.deploy()
