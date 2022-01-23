@@ -27,6 +27,33 @@ class Azure(ICloudService):
     def scale(self):
         print('Scale my app to Azure')
 
+class Aws(ICloudService):
+    def __init__(self):
+        pass
+
+    def auth(self):
+        print('Auth to Aws')
+
+    def deploy(self):
+        print('Deploy to Aws')
+
+    def scale(self):
+        print('Scale my app to Aws')
+
+
+class Gcp(ICloudService):
+    def __init__(self):
+        pass
+
+    def auth(self):
+        print('Auth to Gcp')
+
+    def deploy(self):
+        print('Deploy to Gcp')
+
+    def scale(self):
+        print('Scale my app to Gcp')
+
 class CloudServiceFactory:
      
     @staticmethod
@@ -34,11 +61,16 @@ class CloudServiceFactory:
         if provider == 'Azure':
             return Azure()
         elif provider == 'Aws':
-            pass
+            return Aws()
         elif provider == 'Gcp':
-            pass
+            return Gcp()
         else:
             return -1 
 
 azure = CloudServiceFactory.get_instance('Azure')
 azure.deploy()
+
+aws = CloudServiceFactory.get_instance('Aws')
+aws.auth()
+
+#gcp = CloudServiceFactory.get_instance(;)
