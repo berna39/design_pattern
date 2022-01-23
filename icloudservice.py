@@ -73,4 +73,5 @@ azure.deploy()
 aws = CloudServiceFactory.get_instance('Aws')
 aws.auth()
 
-#gcp = CloudServiceFactory.get_instance(;)
+gcp = CloudServiceFactory.get_instance('Gcp')
+gcp.scale()
