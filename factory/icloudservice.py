@@ -1,6 +1,7 @@
 from abc import ABCMeta, abstractstaticmethod
 
 class ICloudService(metaclass=ABCMeta):
+    services = []
 
     @abstractstaticmethod
     def auth():
@@ -72,6 +73,9 @@ azure.deploy()
 
 aws = CloudServiceFactory.get_instance('Aws')
 aws.auth()
+aws.services = ['RD2', 'EC2', 'Beanstalk', 'S3']
+print(aws.services)
+
 
 gcp = CloudServiceFactory.get_instance('Gcp')
 gcp.scale()
